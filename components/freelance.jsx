@@ -96,7 +96,7 @@ export default function Freelance(){
                         />
                     </div>
                     <div className={styles.blockText2} ref={rellaxRef}>
-                        <p>Website of <i><a href={'https://ffme-paysdelaloire.fr/'} target={'_blank'}>FFME Pays de la loire</a></i></p>
+                        <p>Website of <i><a href={'https://ffme-paysdelaloire.fr/'} rel="noreferrer"  target={'_blank'}>FFME Pays de la loire</a></i></p>
                     </div>
                 </div>
             </div>
