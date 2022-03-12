@@ -2,7 +2,7 @@ import '../styles/globals.css'
 import Image from 'next/image';
 import { useState, useEffect } from "react"
 import { ThemeProvider } from "styled-components";
-import { lightTheme, darkTheme, GlobalStyles } from "./themeConfig"
+import { lightTheme, darkTheme, GlobalStyles } from "../components/themeConfig.js"
 import AppContext from '../src/context/state'
 import smoothscroll from 'smoothscroll-polyfill';
 
