@@ -12,8 +12,9 @@ import portraitWhite from '../assets/images/IMG_2855.png'
 import portraitBlack from '../assets/images/LTA-black.png'
 import AppContext from "../src/context/state";
 
-
 export default function Myself(){
+
+
     useEffect(() => {
         new Rellax(rellaxAnimate.current, { // <---- Via class name
             speed: 2,
@@ -30,6 +31,7 @@ export default function Myself(){
             round: true,
             vertical: true,
         });
+
     }, []);
     const rellaxRef = useRef();
     const rellaxAnimate = useRef();

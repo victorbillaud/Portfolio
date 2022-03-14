@@ -11,9 +11,11 @@ import {passThroughSymbol} from "next/dist/server/web/spec-compliant/fetch-event
 import Freelance from "../components/freelance";
 import Travel from "../components/travel";
 import Studies from "../components/studies";
+import Faq from "../components/faq";
+import {getAllPost} from "../lib/posts";
 
 
-export default function Home() {
+export default function Home({questions}) {
     const value = useContext(AppContext);
     const [scroll, setScroll] = useState(0);
     const stickyRef = useRef();
@@ -79,8 +81,8 @@ export default function Home() {
         <Freelance />
         <Travel />
         <Studies />
+        <Faq />
         </html>
-
     </div>
   )
 }
