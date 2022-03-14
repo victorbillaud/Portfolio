@@ -1,0 +1,64 @@
+.myself {
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.pictures {
+    position: relative;
+    width: 600px;
+    height: 600px;
+    transform: scale(.8);
+    flex: 1;
+}
+
+.description {
+    flex: 2;
+}
+
+.description p {
+    font-family: Polli, sans-serif;
+    font-size: 20px;
+    text-align: left;
+    padding: 10%;
+}
+
+.textTopBlack{
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: inline-block;
+}
+.textBottomBlack{
+    position: absolute;
+    top: 10%;
+    right: 0;
+    display: inline-block;
+}
+
+.blockText {
+    position: absolute;
+    mix-blend-mode: difference;
+    width: 600px;
+    height: 600px;
+    z-index: 500;
+}
+
+.blockText h1{
+    font-family: Polli, sans-serif;
+    font-size: 65px;
+    margin: 0;
+}
+
+.blockImage{
+    z-index: 200;
+    width: 400px;
+    margin: 0 100px;
+    height: 600px;
+    overflow: hidden;
+    border-radius: 10px ;
+    box-shadow: 0px 8px 18px -5px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 8px 18px -5px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 8px 18px -5px rgba(0,0,0,0.75);
+}
