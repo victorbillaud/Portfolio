@@ -1,0 +1,77 @@
+.questions {
+    height: fit-content;
+    border-radius: 5px ;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-bottom: 1px solid rgba(127,128,150,.5);
+    margin: 20px;
+}
+
+
+/* HEADER */
+
+.header{
+    text-align: left;
+    padding: 10px;
+    display: flex;
+    border-bottom: 1px solid rgba(127,128,150,.2);
+    justify-content: center;
+}
+.header div {
+    height:30px;
+    vertical-align:middle;
+    line-height: 30px;
+}
+
+.question {
+    flex: 8;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.autor {
+    text-align: right;
+    flex: auto;
+    font-size: 12px;
+}
+
+.autor span {
+    padding: 2px;
+    border-radius: 5px ;
+    background-color: rgba(255, 0, 0, 0.2);
+}
+
+.date {
+    text-align: right;
+    flex: auto;
+    font-size: 12px;
+}
+
+/* BODY */
+
+.body {
+    text-align: left;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* FOOTER */
+
+.footer {
+    padding: 10px;
+    display: flex;
+    border-top: 1px solid rgba(127,128,150,.2);
+    justify-content: center;
+}
+
+.answerred {
+    text-align: left;
+    flex: 1;
+    font-size: 12px;
+}
+
+.likes {
+    text-align: right;
+    flex: 1;
+    font-size: 12px;
+}
