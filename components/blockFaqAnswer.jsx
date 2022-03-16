@@ -93,8 +93,8 @@ export default class BlockFaqAnswer extends React.Component {
                          </div>
                              <div className={styles.childsAnswers}>
                                  <div className={this.state.develop ? styles.answersPartDevelop2 : styles.answersPart2}>
-                                     {this.state.answers ? this.state.answers.map((items) => {
-                                         return <BlockFaqAnswer data={items} />
+                                     {this.state.answers ? this.state.answers.map((items, index) => {
+                                         return <BlockFaqAnswer key={index} data={items} />
                                      }) : null}
                                  </div>
                              </div>

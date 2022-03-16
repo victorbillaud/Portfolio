@@ -84,8 +84,8 @@ export default class BlockFaq extends React.Component {
                     </div>
                 </div>
                 <div id={"answersPart"} className={this.state.develop ? styles.answersPartDevelop : styles.answersPart}>
-                    {this.state.answers ? this.state.answers.map((items) => {
-                        return <BlockFaqAnswer data={items} />
+                    {this.state.answers ? this.state.answers.map((items, index) => {
+                        return <BlockFaqAnswer key={index} data={items} />
                     }) : null}
                 </div>
             </div>
