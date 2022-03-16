@@ -62,7 +62,9 @@ export default class BlockFaq extends React.Component {
                         <div className={styles.answerred} onClick={(e) => {
                             e.preventDefault();
                             this.setState({develop : !this.state.develop})
-                        }}>{this.props.data.answered ? this.state.answers.length+ " answers" : "no answers"}</div>
+                        }}>
+                            {this.props.data.answered ? this.state.answers.length+ " answers" : "no answers"}
+                        </div>
                         <div className={styles.likes}>
                                 <div className={styles.etoileContainer}>
                                     <div>
@@ -74,7 +76,7 @@ export default class BlockFaq extends React.Component {
                                     }}>
                                         <Image
                                             alt="Picture of the author"
-                                            src={this.props.data.likes > 0 ? etoilePleine : etoileVide}
+                                            src={this.state.likes > 0 ? etoilePleine : etoileVide}
                                             layout="fill"
                                             objectFit="cover"
                                         />

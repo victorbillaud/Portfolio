@@ -1,7 +1,7 @@
 .faq{
     height: 100vh;
     width: 100%;
-    padding: 3em;
+    padding: 5em;
 }
 
 .list {
@@ -11,18 +11,27 @@
     grid-template-columns: repeat(1, 1fr);
     grid-gap: 40px;
 }
-.filter {
+.title {
     height: fit-content;
-    padding: 1em;
-    border-radius: 5px ;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    border-bottom: 1px solid rgba(127,128,150,.5);
-    margin: 20px;
-    margin-top: 4em;
+    padding: 0 1em;
+    font-family: Polli, sans-serif;
+    font-size: 45px;
+}
+
+.title i{
+    cursor: pointer;
+    color: indianred;
+}
+
+.divButtonAddQuestion {
+    text-align: center;
+}
+
+.addQuestionForm {
+    position: relative;
 }
 
 .newMessage {
-    background-color: lightgreen;
     padding: 1em;
     border-radius: 5px ;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 1px 4px 0px;
@@ -37,7 +46,9 @@
     cursor: pointer;
 }
 
+
 .form {
+    position: relative;
     overflow: hidden;
     height: 0;
     border-radius: 5px ;
@@ -46,11 +57,49 @@
 }
 
 .formDevelop {
+    position: relative;
     overflow: hidden;
     height: fit-content;
     border-radius: 5px ;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     margin: 20px;
+}
+
+.loading {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: rgba(128,128,128,.4);
+    z-index: 3000;
+}
+
+.loadingNone {
+    display: none;
+}
+
+.loader {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    border: 4px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 4px solid #575757;
+    width: 40px;
+    height: 40px;
+    margin: -20px 0 0 -20px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 .header{
@@ -66,11 +115,26 @@
     line-height: 30px;
 }
 
+.etoileContainer {
+    padding-right: 10px;
+    border-right: 1px solid rgba(127,128,150,.2);
+}
+
+.etoile{
+    cursor: pointer;
+    opacity: .8;
+    margin-left: 5px;
+    position: relative;
+    width: 13px;
+    height: 13px;
+}
+
 .question {
     flex: 8;
     font-size: 14px;
     font-weight: bold;
     margin-right: 10px;
+    padding-left: 10px;
     outline: none;
     border: none;
     border-right: 1px solid rgba(127,128,150,.2);

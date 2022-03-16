@@ -145,8 +145,9 @@
     flex: 1;
     font-size: 12px;
     display: flex;
+    flex-direction: row-reverse;
     justify-content: right;
-    vertical-align:middle;
+    vertical-align: middle;
 }
 
 .etoileContainer{
