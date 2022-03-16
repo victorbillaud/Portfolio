@@ -31,7 +31,7 @@
 }
 
 .header .items {
-  flex: 1;
+  flex: auto;
   list-style-type: none;
   padding: 0 2em;
   text-align: end;

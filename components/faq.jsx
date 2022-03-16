@@ -30,9 +30,6 @@ export default function Faq({questions}){
                     question.newSubject ? <BlockFaq key={index} data={question}/> : null
                 )) : <i>Pas d'articles pour la recherche correspondante</i>}
             </div>
-            <div className={styles.filter}>
-                filter
-            </div>
         </div>
 
     );

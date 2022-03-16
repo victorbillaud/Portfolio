@@ -7,6 +7,71 @@
 }
 
 
+.answersPart {
+    overflow: hidden;
+    height: 0;
+    transition: height 0.3s linear;
+}
+
+.answersPartDevelop {
+    overflow: hidden;
+    height: auto;
+    transition: height 0.3s linear;
+}
+
+.answersPart2 {
+    overflow: hidden;
+    height: 0;
+    transition: height 0.3s linear;
+}
+
+.answersPartDevelop2 {
+    overflow: hidden;
+    height: auto;
+    width: 100%;
+    transition: height 0.3s linear;
+}
+
+.answersBlock {
+    display: flex;
+    width: 100%;
+    vertical-align:middle;
+}
+
+.mainAnswer {
+    height: fit-content;
+    vertical-align:middle;
+    margin: 10px 20px;
+    height: fit-content;
+    border-radius: 5px ;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 1px 6px 0px;
+    border-bottom: 1px solid rgba(127,128,150,.5);
+}
+
+.answers {
+    width: 100%;
+    max-width: 100%;
+}
+
+.flecheContainer{
+    margin-left: 30px;
+    margin-top: 12px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: start;
+    height: auto;
+    flex-direction: row;
+}
+
+.fleche{
+    opacity: .1;
+    padding: 10px;
+    position: relative;
+    width: 30px;
+    height: 30px;
+}
+
+
 /* HEADER */
 
 .header{
@@ -70,8 +135,33 @@
     font-size: 12px;
 }
 
+.answerred:hover {
+    color: blue;
+    cursor: pointer;
+}
+
 .likes {
-    text-align: right;
+    align-items: end;
     flex: 1;
     font-size: 12px;
+    display: flex;
+    justify-content: right;
+    vertical-align:middle;
+}
+
+.etoileContainer{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: auto;
+    flex-direction: row;
+}
+
+.etoile{
+    cursor: pointer;
+    opacity: .8;
+    margin-left: 5px;
+    position: relative;
+    width: 13px;
+    height: 13px;
 }

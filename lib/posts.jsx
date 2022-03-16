@@ -18,16 +18,27 @@ export async function getAllPost() {
 
 export async function getPostsById(data) {
   if(data.answered){
-    let result;
     return await axios.post('/faqById', {
       data: data
     })
         .then(function (response) {
-          return response.data
+            return response.data
         })
         .catch(function (error) {
           console.log(error);
         })
   } else return false;
 
+}
+
+export async function addLike(data) {
+    return await axios.post('/addLike', {
+      data: data
+    })
+        .then(function (response) {
+          return response;
+        })
+        .catch(function (error) {
+          console.log(error);
+        })
 }
