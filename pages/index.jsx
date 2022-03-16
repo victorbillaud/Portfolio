@@ -4,10 +4,6 @@ import styles from '../styles/Home.module.css'
 import React, {useContext, useEffect, useRef, useState} from "react";
 import AppContext from "../src/context/state";
 import Myself from "../components/myself";
-import portraitWhite from "../assets/images/IMG_2855.png";
-import Rellax from "rellax";
-import StickyEvents from 'sticky-events';
-import {passThroughSymbol} from "next/dist/server/web/spec-compliant/fetch-event";
 import Freelance from "../components/freelance";
 import Travel from "../components/travel";
 import Studies from "../components/studies";
@@ -80,7 +76,6 @@ export default function Home({questions}) {
         <Myself/>
         <Freelance />
         <Travel />
-        <Studies />
         <Faq />
         </html>
     </div>

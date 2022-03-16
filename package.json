@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@uiw/react-md-editor": "^3.10.2",
     "axios": "^0.26.1",
     "mongodb": "^4.4.1",
     "next": "12.1.0",
@@ -16,6 +17,8 @@
     "react": "17.0.2",
     "react-awesome-slider": "^4.1.0",
     "react-dom": "17.0.2",
+    "react-markdown": "^8.0.1",
+    "rehype-sanitize": "^5.0.1",
     "rellax": "^1.12.1",
     "smoothscroll-polyfill": "^0.4.4",
     "sticky-events": "^3.4.12",

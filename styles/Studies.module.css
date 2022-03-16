@@ -1,5 +1,6 @@
 .myself {
     height: 100vh;
+    max-width: 100vw;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -49,7 +50,7 @@
 .images {
     flex: 4;
     display: flex;
-    width: 100%;
+    width: auto;
     padding: 1em;
     padding-left: 3em;
     padding-right: 3em;

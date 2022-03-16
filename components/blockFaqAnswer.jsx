@@ -6,6 +6,10 @@ import fleche from "../assets/images/arriere-gauche.png";
 import etoilePleine from "../assets/images/icons8-star-16.png";
 import etoileVide from "../assets/images/etoile.png";
 
+import ReactMarkdown from 'react-markdown'
+
+import "@uiw/react-md-editor/markdown-editor.css";
+import "@uiw/react-markdown-preview/markdown.css";
 
 export default class BlockFaqAnswer extends React.Component {
     _isMounted = false;
@@ -59,7 +63,7 @@ export default class BlockFaqAnswer extends React.Component {
                                      <div className={styles.date}>{this.convertDate(this.props.data.date)}</div>
                                  </div>
                                  <div className={styles.body}>
-                                     <div className={styles.content}>{this.props.data.text.content}</div>
+                                     <ReactMarkdown>{this.props.data.text.content}</ReactMarkdown>
                                  </div>
                                  <div className={styles.footer}>
                                      <div className={styles.answerred} onClick={(e) => {

@@ -42,3 +42,15 @@ export async function addLike(data) {
           console.log(error);
         })
 }
+
+export async function addQuestion(data) {
+    return await axios.post('/addQuestion', {
+        data: data
+    })
+        .then(function (response) {
+            return response;
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
+}

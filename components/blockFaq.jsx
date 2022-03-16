@@ -7,12 +7,21 @@ import etoilePleine from "../assets/images/icons8-star-16.png";
 import etoileVide from "../assets/images/etoile.png";
 import BlockFaqAnswer from "./blockFaqAnswer";
 
+import ReactMarkdown from 'react-markdown'
+
+import "@uiw/react-md-editor/markdown-editor.css";
+import "@uiw/react-markdown-preview/markdown.css";
+import dynamic from "next/dynamic";
+
 
 export default class BlockFaq extends React.Component {
+    _isMounted = false;
+
     constructor(props) {
         super(props);
         this.state = {
             answers: [],
+            likes: this.props.data.likes,
             develop: false
         }
     }
@@ -23,15 +32,22 @@ export default class BlockFaq extends React.Component {
     }
 
     componentDidMount() {
+        this._isMounted = true;
         getPostsById(this.props.data).then((res)=>{
-            console.log(res)
-            this.setState({answers:res})
+            if (this._isMounted) {
+                console.log(res)
+                this.setState({answers:res})
+            }
         })
     }
 
+    componentWillUnmount() {
+        this._isMounted = false;
+    }
+
     render() {
-        this.state.answers.forEach((items) => console.log(items))
-        return (
+        if(this._isMounted){
+            return (
             <div>
                 <div className={styles.questions}>
                     <div className={styles.header}>
@@ -40,7 +56,7 @@ export default class BlockFaq extends React.Component {
                         <div className={styles.date}>{this.convertDate(this.props.data.date)}</div>
                     </div>
                     <div className={styles.body}>
-                        <div className={styles.content}>{this.props.data.text.content}</div>
+                        <ReactMarkdown>{this.props.data.text.content}</ReactMarkdown>
                     </div>
                     <div className={styles.footer}>
                         <div className={styles.answerred} onClick={(e) => {
@@ -50,12 +66,11 @@ export default class BlockFaq extends React.Component {
                         <div className={styles.likes}>
                                 <div className={styles.etoileContainer}>
                                     <div>
-                                        {this.props.data.likes}
+                                        {this.state.likes}
                                     </div>
                                     <div className={styles.etoile} onClick={() => {
                                         addLike(this.props.data).then((res)=>{
-                                            console.log(res)
-                                        })
+                                            if(res) this.setState({likes : this.state.likes + 1})                                        })
                                     }}>
                                         <Image
                                             alt="Picture of the author"
@@ -69,13 +84,17 @@ export default class BlockFaq extends React.Component {
                     </div>
                 </div>
                 <div id={"answersPart"} className={this.state.develop ? styles.answersPartDevelop : styles.answersPart}>
-                    {this.state.answers.map((items) => (
-                        <BlockFaqAnswer data={items} />
-                    ))}
+                    {this.state.answers ? this.state.answers.map((items) => {
+                        return <BlockFaqAnswer data={items} />
+                    }) : null}
                 </div>
             </div>
 
         );
+        }else{
+            return <i>Chargement des éléments...</i>
+        }
+
     }
 }
 
