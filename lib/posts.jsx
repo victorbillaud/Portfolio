@@ -54,3 +54,14 @@ export async function addQuestion(data) {
             console.log(error);
         })
 }
+export async function addAnswer(data) {
+    return await axios.post('/addAnswer', {
+        data: data
+    })
+        .then(function (response) {
+            return response;
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
+}

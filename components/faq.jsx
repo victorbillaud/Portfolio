@@ -80,8 +80,8 @@ export default function Faq({questions}){
                 <div className={formDevelop ? styles.formDevelop : styles.form}>
                     <div className={formLoading? styles.loading : styles.loadingNone}><div className={styles.loader}/></div>
                     <div className={styles.header}>
-                        <div className={styles.etoileContainer}>
-                            <div className={styles.etoile} onClick={(e) => {
+                        <div className={styles.crossContainer}>
+                            <div className={styles.cross} onClick={(e) => {
                                 e.preventDefault();
                                 setFormDevelop(!formDevelop);
                             }}>

@@ -1,6 +1,6 @@
 import styles from '../styles/components.module.css';
 import React, {useRef} from 'react';
-import {addLike, getPostsById} from "../lib/posts";
+import {addAnswer, addLike, addQuestion, getPostsById} from "../lib/posts";
 import Image from "next/image";
 import fleche from "../assets/images/arriere-gauche.png";
 import etoilePleine from "../assets/images/icons8-star-16.png";
@@ -12,7 +12,15 @@ import ReactMarkdown from 'react-markdown'
 import "@uiw/react-md-editor/markdown-editor.css";
 import "@uiw/react-markdown-preview/markdown.css";
 import dynamic from "next/dynamic";
-
+import cross from "../assets/images/close.png";
+import rehypeSanitize from "rehype-sanitize";
+import {useRouter} from "next/router";
+import "@uiw/react-md-editor/markdown-editor.css";
+import "@uiw/react-markdown-preview/markdown.css";
+const MDEditor = dynamic(
+    () => import("@uiw/react-md-editor"),
+    { ssr: false }
+);
 
 export default class BlockFaq extends React.Component {
     _isMounted = false;
@@ -22,13 +30,32 @@ export default class BlockFaq extends React.Component {
         this.state = {
             answers: [],
             likes: this.props.data.likes,
-            develop: false
+            viewAnswers: false,
+            newAnswer : false,
+            formLoading: false,
+            answerContent: "",
+            answerAutor: "",
+            answerObject: "",
         }
+
+        this.handleObjectChange = this.handleObjectChange.bind(this);
+        this.handleAutorChange = this.handleAutorChange.bind(this);
+        this.handleContentChange = this.handleContentChange.bind(this);
     }
 
     convertDate(date) {
         const newDate  = new Date(date);
         return newDate.toLocaleDateString();
+    }
+
+    handleObjectChange(event){
+        this.setState({answerObject: event.target.value})
+    }
+    handleAutorChange(event){
+        this.setState({answerAutor: event.target.value})
+    }
+    handleContentChange(event){
+        this.setState({answerContent: event})
     }
 
     componentDidMount() {
@@ -59,11 +86,19 @@ export default class BlockFaq extends React.Component {
                         <ReactMarkdown>{this.props.data.text.content}</ReactMarkdown>
                     </div>
                     <div className={styles.footer}>
-                        <div className={styles.answerred} onClick={(e) => {
-                            e.preventDefault();
-                            this.setState({develop : !this.state.develop})
-                        }}>
-                            {this.props.data.answered ? this.state.answers.length+ " answers" : "no answers"}
+                        <div className={styles.answerred}>
+                            <div onClick={(e) => {
+                                e.preventDefault();
+                                this.setState({viewAnswers : !this.state.viewAnswers})
+                            }}>
+                                {this.props.data.answered ? this.state.answers.length+ " answers" : "no answers"}
+                            </div>
+                            <div onClick={(e) => {
+                                e.preventDefault();
+                                this.setState({newAnswer : !this.state.newAnswer})
+                            }}>
+                                Add an answer
+                            </div>
                         </div>
                         <div className={styles.likes}>
                                 <div className={styles.etoileContainer}>
@@ -84,8 +119,60 @@ export default class BlockFaq extends React.Component {
                                 </div>
                         </div>
                     </div>
+
+
                 </div>
-                <div id={"answersPart"} className={this.state.develop ? styles.answersPartDevelop : styles.answersPart}>
+                <div className={this.state.newAnswer ? styles.addQuestionFormDevelop : styles.addQuestionForm}>
+                    <div id={"flecheContainer"} className={styles.flecheContainer}>
+                        <div className={styles.fleche}>
+                            <Image
+                                alt="Picture of the author"
+                                src={fleche}
+                                layout="fill"
+                                objectFit="cover"
+                            />
+                        </div>
+                    </div>
+                    <div className={styles.formDevelop}>
+                        <div className={this.state.formLoading? styles.loading : styles.loadingNone}><div className={styles.loader}/></div>
+                        <div className={styles.header}>
+                            <div className={styles.crossContainer}>
+                                <div className={styles.cross} onClick={(e) => {
+                                    e.preventDefault();
+                                    this.setState({newAnswer : false});
+                                }}>
+                                    <Image
+                                        alt="Picture of the author"
+                                        src={cross}
+                                        layout="fill"
+                                        objectFit="contain"
+                                    />
+                                </div>
+                            </div>
+                            <input value={this.state.answerObject} onChange = {this.handleObjectChange} type={"text"} placeholder={"Object"} className={styles.formQuestion}/>
+                            <input value={this.state.answerAutor} onChange = {this.handleAutorChange} type={"text"} placeholder={"Autor"} className={styles.formAutor}/>
+                            <button className={styles.sendMessage} onClick={(e) => {
+                                e.preventDefault();
+                                this.setState({formLoading : true});
+                                // addArticle({titre: this.state.title, contenu: this.state.content, date: this.state.date, categorie: this.state.cat, urlPhoto:namePhotos, urlFiles: nameFiles}).then(r =>console.log(r))
+                                addAnswer({text : {subject: this.state.answerObject, content: this.state.answerContent }, autor : this.state.answerAutor, parent: this.props.data._id}).then((res)=>{
+                                    this.setState({formLoading : false});
+                                    if(res) {
+                                        this.setState({formLoading : false});
+                                        this.setState({newAnswer : false})
+                                    }
+                                    console.log(res)
+                                })
+                            }}>Send</button>
+                        </div>
+                        <div className={styles.formBody}>
+                            <MDEditor height={150} value={this.state.answerContent} onChange={this.handleContentChange} previewOptions={{
+                                rehypePlugins: [[rehypeSanitize]],
+                            }} />
+                        </div>
+                    </div>
+                </div>
+                <div id={"answersPart"} className={this.state.viewAnswers ? styles.answersPartDevelop : styles.answersPart}>
                     {this.state.answers ? this.state.answers.map((items, index) => {
                         return <BlockFaqAnswer key={index} data={items} />
                     }) : null}

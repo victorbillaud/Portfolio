@@ -102,6 +102,20 @@
     100% { transform: rotate(360deg); }
 }
 
+.crossContainer {
+    padding-right: 10px;
+    border-right: 1px solid rgba(127,128,150,.2);
+}
+
+.cross{
+    cursor: pointer;
+    opacity: .4;
+    margin-left: 5px;
+    position: relative;
+    width: 13px;
+    height: 13px;
+}
+
 .header{
     text-align: left;
     padding: 10px;
