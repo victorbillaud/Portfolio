@@ -79,6 +79,9 @@ export default function Home({questions}) {
         <Freelance />
         <Travel />
         <Faq />
+        <div className={styles.footer}>
+            <p>COPYRIGHT 2022 VICTOR BILLAUD - victorbillaud@gmail.com - 07.82.06.30.54</p>
+        </div>
         </html>
     </div>
   )

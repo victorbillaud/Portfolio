@@ -11,6 +11,10 @@ import Rellax from "rellax";
 import portraitWhite from '../assets/images/IMG_2855.png'
 import portraitBlack from '../assets/images/LTA-black.png'
 import AppContext from "../src/context/state";
+import {addLike} from "../lib/posts";
+import logoGithub from "../assets/images/icone-github-noir.png";
+import logoLinkdn from "../assets/images/640px-LinkedIn_logo_initials.png"
+
 
 export default function Myself(){
 
@@ -59,6 +63,34 @@ export default function Myself(){
                         Personally I am jovial by nature, I like to bring a good atmosphere in a team, I also like to develop a relationship of trust with my work partners.<br/><br/>
                         In my free time I like to play sports, attend cultural events, watch series, documentaries and conferences in the field of technological innovation.
                     </p>
+                    <div className={styles.likes}>
+                        <a href={'https://github.com/victorbillaud'} rel={'noreferrer'} target={'_blank'} className={styles.etoileContainer}>
+                            <div className={styles.etoile}>
+                                <Image
+                                    alt="Picture of the author"
+                                    src={logoGithub}
+                                    layout="fill"
+                                    objectFit="cover"
+                                />
+                            </div>
+                            <div>
+                                Github
+                            </div>
+                        </a>
+                        <a href={'https://linkedin.com/in/victorbillaud'} rel={'noreferrer'} target={'_blank'} className={styles.etoileContainer}>
+                            <div className={styles.etoile}>
+                                <Image
+                                    alt="Picture of the author"
+                                    src={logoLinkdn}
+                                    layout="fill"
+                                    objectFit="cover"
+                                />
+                            </div>
+                            <div>
+                                Linkedin
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div>
         );
