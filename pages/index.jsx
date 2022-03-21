@@ -20,10 +20,10 @@ export default function Home({questions}) {
         window.addEventListener("scroll", ()=> {
             if(window.pageYOffset > 0){
                 //document.getElementById("stickyRef").style.textAlign = 'right';
-                if(window.pageYOffset<(((window.innerWidth-(document.getElementById('name').offsetWidth))/window.innerWidth)*100)*2){
+                if(window.pageYOffset<(((window.innerWidth-(document.getElementById('name').offsetWidth))/window.innerWidth)*95)*2){
                     document.getElementById("stickyRef").style.transform = 'translateX('+window.pageYOffset/2+'vw)'
                 }else{
-                    document.getElementById("stickyRef").style.transform = 'translateX('+(((window.innerWidth-document.getElementById('name').offsetWidth)/window.innerWidth)*100)+'vw)'
+                    document.getElementById("stickyRef").style.transform = 'translateX('+(((window.innerWidth-document.getElementById('name').offsetWidth)/window.innerWidth)*95)+'vw)'
                 }
             }else{
                 //document.getElementById("stickyRef").style.textAlign = 'left';

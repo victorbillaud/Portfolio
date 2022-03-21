@@ -84,3 +84,49 @@
     -webkit-box-shadow: 0px 8px 18px -5px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 8px 18px -5px rgba(0,0,0,0.75);
 }
+
+@media all and (max-width: 1000px){
+    .pictures {
+        width: 200vw;
+        left: 30%;
+    }
+
+    .blockText {
+        right: 0;
+        width: 140vw;
+        height: 600px;
+        z-index: 500;
+    }
+
+    .blockText h1 {
+        font-size: 45px;
+    }
+
+    .blockImage1{
+        width:80vw;
+        height: 60vh;
+        left: -15%;
+    }
+
+    .blockImage2{
+        width: 180vw;
+        height: 110vw;
+        bottom: 0%;
+        left: -30%;
+    }
+
+    .firstPara {
+        font-size: 20px;
+        padding-left: 50%;
+        padding-top: 5%;
+        padding-bottom: 15%;
+    }
+
+    .secondPara {
+        font-size: 16px;
+        padding-left: 75%;
+        padding-bottom: 0;
+        padding-right: 5% ;
+    }
+}
+

@@ -186,5 +186,13 @@
     border: none;
 }
 
+@media all and (max-width: 1000px){
+    .faq{
+        height: 100vh;
+        width: 100%;
+        padding: 1em;
+    }
+}
+
 
 

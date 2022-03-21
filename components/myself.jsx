@@ -17,7 +17,7 @@ export default function Myself(){
 
     useEffect(() => {
         new Rellax(rellaxAnimate.current, { // <---- Via class name
-            speed: 2,
+            speed: 1,
             center: true,
             wrapper: null,
             round: true,

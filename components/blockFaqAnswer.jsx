@@ -16,6 +16,7 @@ import rehypeSanitize from "rehype-sanitize";
 import "@uiw/react-md-editor/markdown-editor.css";
 import "@uiw/react-markdown-preview/markdown.css";
 import dynamic from "next/dynamic";
+import styled from "styled-components";
 const MDEditor = dynamic(
     () => import("@uiw/react-md-editor"),
     { ssr: false }
@@ -70,6 +71,15 @@ export default class BlockFaqAnswer extends React.Component {
     }
 
     render() {
+        const Question = styled.div`
+          height: fit-content;
+          border-radius: 5px ;
+          box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+          border-bottom: 1px solid rgba(127,128,150,.5);
+          margin: 20px;
+          background-color: ${props => props.inputColor || "azure"};;
+        `;
+
         if(this._isMounted){
             return (
                  <div className={styles.answersBlock}>
@@ -84,7 +94,7 @@ export default class BlockFaqAnswer extends React.Component {
                              </div>
                          </div>
                          <div className={styles.answers }>
-                             <div id={"mainAnswer"} className={styles.mainAnswer}>
+                             <Question inputColor={this.props.theme.state.theme === "light" ? "transparent" : "rgb(80,80,80)"} className={styles.mainAnswer}>
                                  <div className={styles.header}>
                                      <div className={styles.question}>{this.props.data.text.subject}</div>
                                      <div className={styles.autor}>writted by <span>{this.props.data.autor}</span></div>
@@ -128,7 +138,7 @@ export default class BlockFaqAnswer extends React.Component {
                                      </div>
                                  </div>
                                  <div/>
-                         </div>
+                             </Question>
                              <div className={this.state.newAnswer ? styles.addQuestionFormDevelop : styles.addQuestionForm}>
                                  <div id={"flecheContainer"} className={styles.flecheContainer}>
                                      <div className={styles.fleche}>
@@ -183,7 +193,7 @@ export default class BlockFaqAnswer extends React.Component {
                              <div className={styles.childsAnswers}>
                                  <div className={this.state.viewAnswers ? styles.answersPartDevelop2 : styles.answersPart2}>
                                      {this.state.answers ? this.state.answers.map((items, index) => {
-                                         return <BlockFaqAnswer key={index} data={items} />
+                                         return items.verified ? <BlockFaqAnswer theme={this.props.theme} key={index} data={items} /> : null
                                      }) : null}
                                  </div>
                          </div>

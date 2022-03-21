@@ -22,7 +22,12 @@ import Rellax from "rellax";
 import Image from "next/image";
 import cross from "../assets/images/close.png";
 
+
+
+
 export default function Faq({questions}){
+
+
 
     const [data, setData] = useState([])
     const [formDevelop, setFormDevelop] = useState(false)
@@ -119,7 +124,7 @@ export default function Faq({questions}){
             </div>
             <div className={styles.list}>
                 {data !== [] ? data.map((question, index) => (
-                    question.newSubject ? <BlockFaq key={index} data={question}/> : null
+                    (question.newSubject && question.verified) ? <BlockFaq theme={value} key={index} data={question}/> : null
                 )) : <i>Pas d'articles pour la recherche correspondante</i>}
             </div>
         </div>

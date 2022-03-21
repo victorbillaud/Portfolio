@@ -1,5 +1,5 @@
 import styles from '../styles/components.module.css';
-import React, {useRef} from 'react';
+import React, {useContext, useRef} from 'react';
 import {addAnswer, addLike, addQuestion, getPostsById} from "../lib/posts";
 import Image from "next/image";
 import fleche from "../assets/images/arriere-gauche.png";
@@ -17,14 +17,19 @@ import rehypeSanitize from "rehype-sanitize";
 import {useRouter} from "next/router";
 import "@uiw/react-md-editor/markdown-editor.css";
 import "@uiw/react-markdown-preview/markdown.css";
+import styled, {css} from "styled-components";
+import AppContext from "../src/context/state";
 const MDEditor = dynamic(
     () => import("@uiw/react-md-editor"),
     { ssr: false }
 );
 
-export default class BlockFaq extends React.Component {
-    _isMounted = false;
 
+export default class BlockFaq extends React.Component {
+
+
+
+    _isMounted = false;
     constructor(props) {
         super(props);
         this.state = {
@@ -43,6 +48,7 @@ export default class BlockFaq extends React.Component {
         this.handleContentChange = this.handleContentChange.bind(this);
     }
 
+
     convertDate(date) {
         const newDate  = new Date(date);
         return newDate.toLocaleDateString();
@@ -60,6 +66,7 @@ export default class BlockFaq extends React.Component {
 
     componentDidMount() {
         this._isMounted = true;
+
         getPostsById(this.props.data).then((res)=>{
             if (this._isMounted) {
                 console.log(res)
@@ -73,10 +80,31 @@ export default class BlockFaq extends React.Component {
     }
 
     render() {
+        const Question = styled.div`
+          height: fit-content;
+          border-radius: 5px ;
+          box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+          border-bottom: 1px solid rgba(127,128,150,.5);
+          margin: 20px;
+          background-color: ${props => props.inputColor || "azure"};;
+        `;
+
+        const FormAnswer = styled.div`
+          position: relative;
+          overflow: hidden;
+          width: 100%;
+          height: fit-content;
+          border-radius: 5px ;
+          box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+          background-color: ${props => props.inputColor || "azure"};;
+          margin: 20px;
+          margin-top: 10px;
+        `
+
         if(this._isMounted){
             return (
             <div>
-                <div className={styles.questions}>
+                <Question inputColor={this.props.theme.state.theme === "light" ? "transparent" : "rgb(80,80,80)"} className={styles.questions}>
                     <div className={styles.header}>
                         <div className={styles.question}>{this.props.data.text.subject}</div>
                         <div className={styles.autor}>writted by <span>{this.props.data.autor}</span></div>
@@ -119,9 +147,7 @@ export default class BlockFaq extends React.Component {
                                 </div>
                         </div>
                     </div>
-
-
-                </div>
+                </Question>
                 <div className={this.state.newAnswer ? styles.addQuestionFormDevelop : styles.addQuestionForm}>
                     <div id={"flecheContainer"} className={styles.flecheContainer}>
                         <div className={styles.fleche}>
@@ -133,7 +159,7 @@ export default class BlockFaq extends React.Component {
                             />
                         </div>
                     </div>
-                    <div className={styles.formDevelop}>
+                    <FormAnswer inputColor={this.props.theme.state.theme === "light" ? "transparent" : "rgb(80,80,80)"} className={styles.formDevelop}>
                         <div className={this.state.formLoading? styles.loading : styles.loadingNone}><div className={styles.loader}/></div>
                         <div className={styles.header}>
                             <div className={styles.crossContainer}>
@@ -170,11 +196,11 @@ export default class BlockFaq extends React.Component {
                                 rehypePlugins: [[rehypeSanitize]],
                             }} />
                         </div>
-                    </div>
+                    </FormAnswer>
                 </div>
                 <div id={"answersPart"} className={this.state.viewAnswers ? styles.answersPartDevelop : styles.answersPart}>
                     {this.state.answers ? this.state.answers.map((items, index) => {
-                        return <BlockFaqAnswer key={index} data={items} />
+                        return items.verified ? <BlockFaqAnswer theme={this.props.theme} key={index} data={items} /> : null
                     }) : null}
                 </div>
             </div>

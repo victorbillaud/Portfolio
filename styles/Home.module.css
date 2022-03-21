@@ -1,7 +1,6 @@
 
 .main {
   height: 100vh;
-  max-width: 100vw;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -45,7 +44,7 @@
 }
 
 .header .name {
-  padding:  0 2em;
+  padding: 0 0em 0 2em;
   width: auto;
   cursor: pointer;
 }
@@ -70,16 +69,21 @@
 
 @media all and (max-width: 1000px){
 
+  .header {
+    width: 200vw;
+  }
+  .resume {
+    height: 200vh;
+  }
+
+  .resume h1 {
+    flex: 1;
+    font-size: 80px;
+  }
 
   .main {
-    height: 100vh;
-    min-height: 100vh;
-    max-width: 100vw;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    overflow-y: hidden;
+    height: 200vh;
+    width: 200vw;
   }
 
 }

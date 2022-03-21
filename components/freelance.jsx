@@ -35,8 +35,16 @@ export default function Freelance(){
             vertical: true,
         });
 
-        new Rellax(rellaxRef.current, { // <---- Via useRef element
+        new Rellax(rellaxAnimate3.current, { // <---- Via useRef element
             speed: 1,
+            center: true,
+            wrapper: null,
+            round: true,
+            vertical: true,
+        });
+
+        new Rellax(rellaxRef.current, { // <---- Via useRef element
+            speed: 3,
             center: true,
             wrapper: null,
             round: true,
@@ -66,18 +74,19 @@ export default function Freelance(){
     const rellaxRef = useRef();
     const rellaxAnimate1 = useRef();
     const rellaxAnimate2 = useRef();
+    const rellaxAnimate3 = useRef();
+
     const value = useContext(AppContext);
 
     return(
-        <div className={styles.freelance} id={'freelance'}>
-            <div className={styles.firstpage}>
+        <div className={styles.freelance} >
                 <div className={styles.description}>
                     <p>
                         I have been working as a freelancer for a few months in parallel to my studies. <br/>This work allows me to acquire many skills in my free time.                </p>
                 </div>
                 <div className={styles.pictures} >
                     <div className={styles.blockText} ref={rellaxRef}>
-                        <h1 className={styles.textTopBlack} >Work in Freelance</h1>
+                        <h1 ref={rellaxAnimate3} className={styles.textTopBlack} >Work in Freelance</h1>
                     </div>
                     <div className={styles.blockImage1} ref={rellaxAnimate1} >
                         <Image
@@ -99,7 +108,6 @@ export default function Freelance(){
                         <p>Website of <i><a href={'https://ffme-paysdelaloire.fr/'} rel="noreferrer"  target={'_blank'}>FFME Pays de la loire</a></i></p>
                     </div>
                 </div>
-            </div>
         </div>
 
     );
