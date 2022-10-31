@@ -61,9 +61,7 @@ export default function Home({questions}) {
                     <li><h2><a onClick={() => {
                         window.scrollBy({ top: window.innerHeight*3, left: 0, behavior: 'smooth' })
                     }}>Travel</a></h2></li>
-                    <li><h2><a onClick={() => {
-                        window.scrollBy({ top: window.innerHeight*4, left: 0, behavior: 'smooth' })
-                    }}>FAQ</a></h2></li>
+                    <li><h2><a href='https://term.victorbillaud.fr'>Term</a></h2></li>
                 </ul>
             </div>
             <div className={styles.resume} id={"e"}>
